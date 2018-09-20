@@ -5,11 +5,20 @@ const program = require('commander');
 const download = require('download-git-repo');
 
 program.version(package.version, '-v,--version')
-    .command('init <name>')
-    .action((name) => {
+    .command('init <name> [branch]')
+    .action((name,branch) => {
+        console.log(name)
+        console.log(branch)
         console.log("load project")
-        download('direct:https://github.com/QCCS/tech-share.git#master', name, { clone: true }, function (err) {
-            console.log(err ? 'Init Error' : 'Init Success')
-        })
+        if(branch){
+            download('direct:https://github.com/QCCS/tech-share.git#'+branch, name, { clone: true }, function (err) {
+                console.log(err ? 'Init Error' : 'Init Success')
+            })
+        }else {
+            download('direct:https://github.com/QCCS/tech-share.git#master', name, { clone: true }, function (err) {
+                console.log(err ? 'Init Error' : 'Init Success')
+            })
+        }
+
     });
 program.parse(process.argv);
