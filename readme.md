@@ -22,3 +22,10 @@ share-tech-cli init name
 share-tech-cli init name branchName
 
 ```
+
+创建一个页面，（测试性api）
+new后加两个参数
+```
+share-tech-cli new page pageName
+
+```
